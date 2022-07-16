@@ -5,7 +5,8 @@ class Solution {
         int low = 0;
         
         while(low<=high){
-            int mid =  low + (high-low)/2;
+            // int mid =  low + (high-low)/2;
+            int mid = (low+high)/2;
             if(nums[mid] == target){
                 return mid;
             }else if(nums[mid]<target){
@@ -15,19 +16,6 @@ class Solution {
                 }  
             } 
         return low;
-        
-//         int ans = -1;
-        
-//         for(int i = 0; i<nums.length; i++){
-//             if(!(nums[i]<target)){
-//                 ans = i;
-//                 break;
-//             }
-//         }
-//         if(ans==-1){
-//             return nums.length;
-//         }
-//         return ans;
 
     }
 }
