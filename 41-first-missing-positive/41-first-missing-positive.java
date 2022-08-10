@@ -1,14 +1,6 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
         
-        // int minele = Integer.MAX_VALUE;
-        // for(int k = 0; k<nums.length; k++){
-        //     if(nums[k]<minele){
-        //         minele = nums[k];
-        //     }
-        // }
-        
-        // int i = minele;
         int i = 0;
 
         while(i<nums.length){
