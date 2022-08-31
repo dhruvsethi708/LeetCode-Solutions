@@ -1,29 +1,28 @@
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        
-        boolean[] visited = new boolean[nums.length];
-        
-        call(res, nums, new ArrayList<>(), visited);
-        return res;
+        List<List<Integer>> ans = new ArrayList<>();
+        boolean[] bool = new boolean[nums.length]; 
+        call(nums,0,new ArrayList<>(),ans,bool);
+        return ans;
     }
     
-    void call( List<List<Integer>> res, int[] nums,  List<Integer> curr, boolean[] visited){
+    void call(int[] nums, int index, List<Integer> list, List<List<Integer>> ans, boolean[] bool){
         
-        if(curr.size()==nums.length){
-            res.add(new ArrayList<>(curr));
+        if(index==nums.length){
+            ans.add(new ArrayList<>(list));
             return;
         }
         
         for(int i = 0; i<nums.length; i++){
-            if(visited[i]){
+            if(bool[i]){
                 continue;
             }
-            curr.add(nums[i]);
-            visited[i]= true;
-            call(res,nums,curr,visited);
-            curr.remove(curr.size()-1);
-            visited[i]=false;
+            list.add(nums[i]);
+            bool[i]=true;
+            call(nums,index+1,list,ans,bool);
+            list.remove(list.size()-1);
+            bool[i]=false;
+
         }
     }
 }
