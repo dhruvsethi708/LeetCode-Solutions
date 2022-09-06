@@ -8,12 +8,7 @@ class Solution {
             String binary = Integer.toBinaryString(i);
             
             for(char ch: binary.toCharArray()){
-                int val = 0;
-                if(ch=='0'){
-                    val = 0;
-                }else{
-                    val = 1;
-                }
+                int val = (ch=='0')?0:1;
                 
                 newno = ((newno*2)%mod + val)%mod;
             }
