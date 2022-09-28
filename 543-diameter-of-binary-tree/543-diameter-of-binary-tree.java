@@ -18,10 +18,10 @@ class Solution {
         if(root == null){
             return 0;
         }
-        
+
+        int depth = height(root.left) + height(root.right) + 2;
         int left = diameterOfBinaryTree(root.left);
         int right = diameterOfBinaryTree(root.right);
-        int depth = height(root.left) + height(root.right) + 2;
         
         return Math.max(left, Math.max(right, depth));
 
