@@ -1,7 +1,7 @@
 class Solution {
     public int twoEggDrop(int n) {
         
-        //1 2 2 3 3 3 4 4 4 4 5 5 5 5 5..................
+        // Pattern - 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5..................
         
         int i = 1;
         
