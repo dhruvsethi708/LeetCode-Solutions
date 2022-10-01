@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    boolean isBal = true;
+    private boolean isBal = true;
     public boolean isBalanced(TreeNode root) {
         height(root);
         return isBal;
