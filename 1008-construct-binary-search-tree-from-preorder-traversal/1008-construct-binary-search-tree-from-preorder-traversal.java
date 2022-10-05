@@ -28,7 +28,8 @@ class Solution {
             return null;
         }
         
-        TreeNode node = new TreeNode(preorder[idx++]);
+        TreeNode node = new TreeNode(preorder[idx]);
+        idx++;
         
         node.left = helper(preorder, lr, node.val);
         node.right = helper(preorder, node.val, rr);
