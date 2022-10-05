@@ -1,5 +1,16 @@
 class Solution {
     public int fib(int n) {
-      return (int)((Math.pow(((1+Math.sqrt(5))/2), n) - Math.pow(((1-Math.sqrt(5))/2), n)) / Math.sqrt(5));
+      
+        if (n <= 0) return 0;
+      
+        int fibo[]=new int[n+1];
+        fibo[0] = 0; fibo[1] = 1;        
+      
+    
+        for (int i=2; i<=n; i++)
+            fibo[i] = fibo[i-1]+fibo[i-2];
+      
+      
+        return fibo[n];
     }
 }
