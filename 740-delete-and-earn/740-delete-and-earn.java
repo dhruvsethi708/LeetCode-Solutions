@@ -6,7 +6,7 @@ class Solution {
         int max = Integer.MIN_VALUE;
         for(int i = 0; i<nums.length; i++){
             max = Math.max(nums[i], max);
-            dp[nums[i]] += nums[i]; 
+            dp[nums[i]] += nums[i]; //increasing count*i directly
         }
         
         for(int i = 2; i<=max; i++){
