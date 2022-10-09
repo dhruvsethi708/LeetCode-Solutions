@@ -1,23 +1,48 @@
 class Solution {
     public int maxSubarraySumCircular(int[] nums) {
         
-        int sum = 0;
+        int n = nums.length;
         
-        for(int i:nums) {
-            sum+=i;
+        int totalsum = 0;
+        for(int k = 0; k<n; k++){
+            totalsum += nums[k];
         }
-        
-        int max=nums[0], maxSum=nums[0], min=nums[0], minSum=nums[0];
-        
-        for(int i=1;i<nums.length;++i) {
-            
-            max=Math.max(nums[i], nums[i]+max);
-            maxSum=Math.max(maxSum, max);
-            
-            min=Math.min(nums[i],nums[i]+min);
-            minSum=Math.min(minSum, min);
-        }
+        int currsum = nums[0];
+        int osum = nums[0];
+        osum = Math.max(currsum, osum);            
 
-        return Math.max(sum==minSum?minSum:sum-minSum, maxSum);
+        for(int i = 1; i<n; i++){
+            
+            if(currsum>=0){
+                currsum+=nums[i];
+            }else{
+                currsum=nums[i];
+            }
+            osum = Math.max(currsum, osum);            
+
+        }
+        
+        int currdiff = nums[0];
+        int odiff = nums[0];
+        odiff = Math.min(currdiff, odiff);            
+
+        for(int j = 1; j<n; j++){
+            if(currdiff<=0){
+                currdiff+=nums[j];
+            }else{
+                currdiff=nums[j];
+            }
+            
+            odiff = Math.min(currdiff, odiff);            
+
+        }
+        
+        if(totalsum==odiff){
+                odiff = Integer.MIN_VALUE;
+            }else{
+                odiff = totalsum-odiff;
+        }
+        
+        return Math.max(osum, odiff);
     }
 }
