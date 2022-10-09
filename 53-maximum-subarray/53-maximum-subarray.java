@@ -1,18 +1,23 @@
 class Solution {
     public int maxSubArray(int[] nums) {
-        int sum = 0;
-        int max = nums[0];
+        // kadane's algorithm
         
-        for(int i = 0; i<nums.length; i++){
-            sum += nums[i];
-            if(sum > max){
-                max = sum;
+        int currsum = nums[0];
+        int overallsum = nums[0];
+        
+        for(int i = 1; i<nums.length; i++){
+            if(currsum>=0){
+                currsum+=nums[i];
+            }else{
+                currsum = nums[i];
             }
-            if(sum<0){
-                sum = 0;
+            
+            if(currsum>overallsum){
+                overallsum = currsum;
             }
         }
         
-        return max;
+        return overallsum;
+
     }
 }
