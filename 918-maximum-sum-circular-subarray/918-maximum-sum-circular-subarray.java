@@ -9,7 +9,7 @@ class Solution {
         }
         int currsum = nums[0];
         int osum = nums[0];
-        osum = Math.max(currsum, osum);            
+        // osum = Math.max(currsum, osum);            
 
         for(int i = 1; i<n; i++){
             
@@ -24,7 +24,7 @@ class Solution {
         
         int currdiff = nums[0];
         int odiff = nums[0];
-        odiff = Math.min(currdiff, odiff);            
+        // odiff = Math.min(currdiff, odiff);            
 
         for(int j = 1; j<n; j++){
             if(currdiff<=0){
