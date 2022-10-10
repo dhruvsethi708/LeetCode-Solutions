@@ -1,6 +1,8 @@
 class Solution {
     public int getMaxLen(int[] nums) {
-        
+        //     sn       sn en   
+        // 1 2 -1  0  3 -2 -1  0  1 1 1 1
+        // s    e     s     e     s     e
         int n = nums.length;
         int ans = 0;
         
@@ -10,7 +12,7 @@ class Solution {
             
             int e = s;
             int cntneg = 0;
-            int sn = -1, en=-1;
+            int sn = -1, en=-1; // startneg = sn, endneg = en
             while(e<n && nums[e]!=0){
                 if(nums[e]<0){
                     cntneg++; 
