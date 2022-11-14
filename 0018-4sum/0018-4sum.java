@@ -1,55 +1,37 @@
 class Solution {
-    List<List<Integer>> ans = new ArrayList<>();
-
-    public List<List<Integer>> fourSum(int[] nums, int target) {        
+    public List<List<Integer>> fourSum(int[] nums, int target) {
         
-        if(nums.length==4 && nums[0]==1000000000 && nums[1]==1000000000 && nums[2]==1000000000 && nums[3]==1000000000 && target==-294967296){
-            return new ArrayList<>();
-        }
-
+        List<List<Integer>> ans = new ArrayList<>();
+        int n = nums.length;
         
         Arrays.sort(nums);
         
-        for(int i = 0; i<nums.length-3; i++){
-            if(i>0 && nums[i]==nums[i-1]){
-                continue;
-            }
-            
-            for(int j = i+1; j<nums.length-2; j++){
-                if(j>i+1 && nums[j]==nums[j-1]){
-                    continue;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+
+                long target2 = (long) target - (long) nums[i] - (long) nums[j];
+                int lo = j + 1, hi = n - 1;
+
+                while (lo < hi) {
+                    int twoSum = nums[lo] + nums[hi];
+
+                    if (twoSum < target2) lo++;
+                    else if (twoSum > target2) hi--;
+                    else {
+                        List<Integer> quad = Arrays.asList(nums[i], nums[j], nums[lo], nums[hi]);
+                        ans.add(quad);
+
+                        while (lo < hi && nums[lo] == quad.get(2)) lo++;
+                        while (lo < hi && nums[hi] == quad.get(3)) hi--;
                 }
-                searchpairs(nums, target, i, j);
             }
+
+            while (j + 1 < n && nums[j] == nums[j + 1]) j++;
         }
-        
-        return ans;
+
+        while (i + 1 < n && nums[i] == nums[i + 1]) i++;
     }
-    
-    void searchpairs(int[] nums, int target, int first, int second){
-        int left = second + 1;
-        int right = nums.length-1;
-        
-        while(left<right){
-            int sum = nums[first] + nums[second] + nums[left] + nums[right];
-            if(sum==target){
-                ans.add(Arrays.asList(nums[first], nums[second], nums[left], nums[right]));
-                left++;
-                right--;
-                
-                while(left<right && nums[left]==nums[left-1]){
-                    left++;
-                }
-                
-                while(left<right && nums[right]==nums[right+1]){
-                    right--;
-                }
-            }else if(sum<target){
-                left++;
-            }else{
-                right--;
-            }
-            
-        }
+
+    return ans;
     }
 }
