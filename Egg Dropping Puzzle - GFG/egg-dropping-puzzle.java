@@ -36,6 +36,7 @@ class Solution
 {
     //Function to find minimum number of attempts needed in 
     //order to find the critical floor.
+   
     static int eggDrop(int n, int k) 
 	{
 	    // Your code here
@@ -52,5 +53,6 @@ class Solution
         }
         
         return m;
+
 	}
 }
